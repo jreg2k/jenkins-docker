@@ -1,2 +1,2 @@
 # jenkins-docker
-Docker project fpr Jenkins pipeline
+Docker project for Jenkins pipeline
