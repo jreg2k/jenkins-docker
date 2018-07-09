@@ -11,7 +11,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("jreg2k/jenkins-docker")
+        app = docker.build("first-docker")
     }
 
     stage('Test image') {
