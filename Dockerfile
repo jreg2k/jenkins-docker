@@ -1,15 +1,10 @@
-# use a nginx base image
-FROM nginx
-
-# set maintainer
-LABEL maintainer "james.regis@gmail.com"
-
-COPY ./web/ /usr/share/nginx/html
-
-# set a health check
-HEALTHCHECK --interval=30s \
-            --timeout=30s \
-            CMD curl -f http://127.0.0.1:80 || exit 1
-
-# tell docker what port to expose
-EXPOSE 80
+FROM ubuntu:latest
+MAINTAINER James Regis "james.regis@gmail.com"
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential
+RUN pip install --upgrade pip
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]
