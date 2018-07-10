@@ -22,6 +22,12 @@ node {
             sh 'echo "Tests passed"'
         }
     }
+    
+    stage('Sanity check') {
+        steps {
+            input "Does the staging environment look ok?"
+        }
+    }
 
     stage('Push image') {
         /* Finally, we'll push the image with two tags:
